@@ -1,9 +1,9 @@
 package com.gendalf.app;
 
 public class CoronaDesinfector {
-    private Announcer announcer = new ConsoleAnnouncer();
+    private Announcer announcer = ObjectFactory.getInstance().createObject(Announcer.class);
 
-    private Policeman policeman = new PolicemanImpl();
+    private Policeman policeman = ObjectFactory.getInstance().createObject(Policeman.class);
 
     public void start(Room room) {
         announcer.announce("The disinfection is starting, everyone - go away!");
