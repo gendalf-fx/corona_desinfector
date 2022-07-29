@@ -1,6 +1,6 @@
-package com.gendalf.app;
+package com.gendalf.app.servcie.policeman;
 
-public class PolicemanImpl implements Policeman{
+public class PolicemanImpl implements Policeman {
     @Override
     public void makePeopleLeaveRoom() {
         System.out.println("Piu-piu, bah-bah, trah-trah");

@@ -1,6 +1,6 @@
-package com.gendalf.app;
+package com.gendalf.app.servcie.announcer;
 
-public class ConsoleAnnouncer implements Announcer{
+public class ConsoleAnnouncer implements Announcer {
     @Override
     public void announce(String message) {
         System.out.println(message);

@@ -1,5 +1,10 @@
 package com.gendalf.app;
 
+import com.gendalf.app.config.ObjectFactory;
+import com.gendalf.app.data.Room;
+import com.gendalf.app.servcie.announcer.Announcer;
+import com.gendalf.app.servcie.policeman.Policeman;
+
 public class CoronaDesinfector {
     private Announcer announcer = ObjectFactory.getInstance().createObject(Announcer.class);
 

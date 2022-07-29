@@ -1,4 +1,4 @@
-package com.gendalf.app;
+package com.gendalf.app.servcie.policeman;
 
 public class AngerPoliceman implements Policeman {
     @Override
