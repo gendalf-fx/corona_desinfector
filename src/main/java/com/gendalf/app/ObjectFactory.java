@@ -1,11 +1,18 @@
 package com.gendalf.app;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import lombok.SneakyThrows;
 
 public class ObjectFactory {
     private static ObjectFactory instance = new ObjectFactory();
 
-    private Config config = new JavaConfig("com.gendalf.app");
+    private Config config;
+
+    public ObjectFactory() {
+        this.config = new JavaConfig("com.gendalf.app", new HashMap<>(Map.of(Policeman.class, AngerPoliceman.class)));
+    }
 
     public static ObjectFactory getInstance() {
         return instance;

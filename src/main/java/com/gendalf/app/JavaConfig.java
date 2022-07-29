@@ -1,5 +1,6 @@
 package com.gendalf.app;
 
+import java.util.Map;
 import java.util.Set;
 
 import org.reflections.Reflections;
@@ -7,20 +8,23 @@ import org.reflections.Reflections;
 public class JavaConfig implements Config {
 
     private Reflections scanner;
+    private Map<Class, Class> inf2ImplClass;
 
-    public JavaConfig(String packageToScan) {
+    public JavaConfig(String packageToScan, Map<Class, Class> inf2ImplClass) {
         this.scanner = new Reflections(packageToScan);
+        this.inf2ImplClass = inf2ImplClass;
     }
 
 
     @Override
-    public <T> Class<? extends T> getImplClass(Class<T> inf) {
-        Set<Class<? extends T>> classes = scanner.getSubTypesOf(inf);
-        if (classes.size() != 1) {
-            throw new RuntimeException(inf.getSimpleName() + " has 0 or more than 1 implementations!");
-        }
-
-
-        return classes.iterator().next();
+    public <T> Class getImplClass(Class<T> inf) {
+        return inf2ImplClass.computeIfAbsent(inf, aClass -> {
+            Set<Class<? extends T>> classes = scanner.getSubTypesOf(inf);
+            if (classes.size() != 1) {
+                throw new RuntimeException(inf.getSimpleName() + " has 0 or more than 1 implementations, please " +
+                    "update your config!");
+            }
+            return classes.iterator().next();
+        });
     }
 }
