@@ -1,7 +1,10 @@
 package com.gendalf.app.config;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import com.gendalf.app.annotatoin.config.ObjectConfigurator;
 import com.gendalf.app.context.ApplicationContext;
@@ -28,6 +31,13 @@ public class ObjectFactory {
 
         T t = implClass.getDeclaredConstructor().newInstance();
         configurators.forEach(objectConfigurator -> objectConfigurator.configure(t, context));
+
+        for (Method method : implClass.getMethods()) {
+            if (method.isAnnotationPresent(PostConstruct.class)) {
+                method.invoke(t);
+            }
+        }
+
         return t;
     }
 }
