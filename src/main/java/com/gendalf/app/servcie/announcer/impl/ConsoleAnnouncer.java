@@ -1,12 +1,13 @@
 package com.gendalf.app.servcie.announcer.impl;
 
+import com.gendalf.app.annotatoin.InjectByType;
 import com.gendalf.app.config.ObjectFactory;
 import com.gendalf.app.servcie.announcer.Announcer;
 import com.gendalf.app.servcie.recomender.Recommender;
 
 public class ConsoleAnnouncer implements Announcer {
-
-    private Recommender recommender = ObjectFactory.getInstance().createObject(Recommender.class);
+    @InjectByType
+    private Recommender recommender;
 
     @Override
     public void announce(String message) {

@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 
 import com.gendalf.app.annotatoin.InjectProperty;
 import com.gendalf.app.annotatoin.config.ObjectConfigurator;
+import com.gendalf.app.context.ApplicationContext;
 import lombok.SneakyThrows;
 
 public class InjectPropertyAnnotationObjectConfigurator implements ObjectConfigurator {
@@ -28,7 +29,7 @@ public class InjectPropertyAnnotationObjectConfigurator implements ObjectConfigu
 
     @SneakyThrows
     @Override
-    public void configure(Object object) {
+    public void configure(Object object, ApplicationContext context) {
         Class<?> implClass = object.getClass();
 
         for (Field field : implClass.getDeclaredFields()) {

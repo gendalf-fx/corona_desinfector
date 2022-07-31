@@ -1,19 +1,20 @@
-package com.gendalf.app.annotatoin.config;
+package com.gendalf.app.annotatoin.config.impl;
 
 import java.lang.reflect.Field;
 
 import com.gendalf.app.annotatoin.InjectByType;
-import com.gendalf.app.config.ObjectFactory;
+import com.gendalf.app.annotatoin.config.ObjectConfigurator;
+import com.gendalf.app.context.ApplicationContext;
 import lombok.SneakyThrows;
 
 public class InjectByTypeAnnotationObjectConfigurator implements ObjectConfigurator {
     @SneakyThrows
     @Override
-    public void configure(Object object) {
+    public void configure(Object object, ApplicationContext context) {
         for (Field field : object.getClass().getDeclaredFields()) {
             if (field.isAnnotationPresent(InjectByType.class)) {
                 field.setAccessible(true);
-                Object instance = ObjectFactory.getInstance().createObject(field.getType());
+                Object instance = context.getObject(field.getType());
                 field.set(object, instance);
             }
         }

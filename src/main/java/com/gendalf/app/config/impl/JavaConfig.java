@@ -1,8 +1,9 @@
-package com.gendalf.app.config;
+package com.gendalf.app.config.impl;
 
 import java.util.Map;
 import java.util.Set;
 
+import com.gendalf.app.config.Config;
 import lombok.Getter;
 import org.reflections.Reflections;
 
