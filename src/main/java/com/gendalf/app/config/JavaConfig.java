@@ -3,11 +3,13 @@ package com.gendalf.app.config;
 import java.util.Map;
 import java.util.Set;
 
+import lombok.Getter;
 import org.reflections.Reflections;
 
 public class JavaConfig implements Config {
-
+    @Getter
     private Reflections scanner;
+
     private Map<Class, Class> inf2ImplClass;
 
     public JavaConfig(String packageToScan, Map<Class, Class> inf2ImplClass) {

@@ -1,14 +1,10 @@
 package com.gendalf.app.config;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import com.gendalf.app.servcie.announcer.InjectProperty;
 import com.gendalf.app.servcie.policeman.AngerPoliceman;
 import com.gendalf.app.servcie.policeman.Policeman;
 import lombok.SneakyThrows;
@@ -16,10 +12,17 @@ import lombok.SneakyThrows;
 public class ObjectFactory {
     private static ObjectFactory instance = new ObjectFactory();
 
+    private List<ObjectConfigurator> configurators;
+
     private Config config;
 
+    @SneakyThrows
     public ObjectFactory() {
         this.config = new JavaConfig("com.gendalf.app", new HashMap<>(Map.of(Policeman.class, AngerPoliceman.class)));
+        this.configurators = new ArrayList<>();
+        for (Class<? extends ObjectConfigurator> aClass : config.getScanner().getSubTypesOf(ObjectConfigurator.class)) {
+            configurators.add(aClass.getDeclaredConstructor().newInstance());
+        }
     }
 
     public static ObjectFactory getInstance() {
@@ -33,19 +36,7 @@ public class ObjectFactory {
             implClass = config.getImplClass(type);
         }
         T t = implClass.getDeclaredConstructor().newInstance();
-        for (Field field : implClass.getDeclaredFields()) {
-            InjectProperty property = field.getAnnotation(InjectProperty.class);
-            String path = ClassLoader.getSystemClassLoader().getResource("application.properties").getPath();
-            Stream<String> lines = new BufferedReader(new FileReader(path)).lines();
-            Map<String, String> propertiesMap =
-                lines.map(line -> line.split("=")).collect(Collectors.toMap(arr -> arr[0], arr -> arr[1]));
-            if (property != null) {
-                String value = property.value().isEmpty() ? propertiesMap.get(field.getName()) : property.value();
-                field.setAccessible(true);
-                field.set(t, value);
-            }
-        }
-
+        configurators.forEach(objectConfigurator -> objectConfigurator.configure(t));
         return t;
     }
 }
