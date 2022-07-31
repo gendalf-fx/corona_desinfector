@@ -1,14 +1,16 @@
-package com.gendalf.app;
+package com.gendalf.app.data;
 
-import com.gendalf.app.config.ObjectFactory;
+import com.gendalf.app.annotatoin.InjectByType;
 import com.gendalf.app.data.Room;
 import com.gendalf.app.servcie.announcer.Announcer;
 import com.gendalf.app.servcie.policeman.Policeman;
 
 public class CoronaDesinfector {
-    private Announcer announcer = ObjectFactory.getInstance().createObject(Announcer.class);
 
-    private Policeman policeman = ObjectFactory.getInstance().createObject(Policeman.class);
+    @InjectByType
+    private Announcer announcer;
+    @InjectByType
+    private Policeman policeman;
 
     public void start(Room room) {
         announcer.announce("The disinfection is starting, everyone - go away!");

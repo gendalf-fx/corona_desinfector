@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.gendalf.app.servcie.policeman.AngerPoliceman;
+import com.gendalf.app.annotatoin.config.ObjectConfigurator;
+import com.gendalf.app.servcie.policeman.impl.AngerPoliceman;
 import com.gendalf.app.servcie.policeman.Policeman;
 import lombok.SneakyThrows;
 

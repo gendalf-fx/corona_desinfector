@@ -1,4 +1,4 @@
-package com.gendalf.app.config;
+package com.gendalf.app.annotatoin.config.impl;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,7 +8,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.gendalf.app.servcie.announcer.InjectProperty;
+import com.gendalf.app.annotatoin.InjectProperty;
+import com.gendalf.app.annotatoin.config.ObjectConfigurator;
 import lombok.SneakyThrows;
 
 public class InjectPropertyAnnotationObjectConfigurator implements ObjectConfigurator {
@@ -33,7 +34,8 @@ public class InjectPropertyAnnotationObjectConfigurator implements ObjectConfigu
         for (Field field : implClass.getDeclaredFields()) {
             InjectProperty property = field.getAnnotation(InjectProperty.class);
             if (property != null) {
-                String value = property.value().isEmpty() ? propertiesMap.get(field.getName()) : property.value();
+                String value = property.value().isEmpty() ? propertiesMap.get(field.getName()) :
+                    propertiesMap.get(property.value());
                 field.setAccessible(true);
                 field.set(object, value);
             }

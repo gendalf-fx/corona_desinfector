@@ -1,4 +1,6 @@
-package com.gendalf.app.servcie.policeman;
+package com.gendalf.app.servcie.policeman.impl;
+
+import com.gendalf.app.servcie.policeman.Policeman;
 
 public class AngerPoliceman implements Policeman {
     @Override

@@ -1,4 +1,4 @@
-package com.gendalf.app.servcie.announcer;
+package com.gendalf.app.annotatoin;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

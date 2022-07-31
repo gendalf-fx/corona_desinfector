@@ -1,6 +1,8 @@
-package com.gendalf.app.servcie.announcer;
+package com.gendalf.app.servcie.announcer.impl;
 
 import com.gendalf.app.config.ObjectFactory;
+import com.gendalf.app.servcie.announcer.Announcer;
+import com.gendalf.app.servcie.recomender.Recommender;
 
 public class ConsoleAnnouncer implements Announcer {
 
