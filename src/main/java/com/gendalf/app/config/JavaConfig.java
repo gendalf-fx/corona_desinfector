@@ -8,9 +8,9 @@ import org.reflections.Reflections;
 
 public class JavaConfig implements Config {
     @Getter
-    private Reflections scanner;
+    private final Reflections scanner;
 
-    private Map<Class, Class> inf2ImplClass;
+    private final Map<Class, Class> inf2ImplClass;
 
     public JavaConfig(String packageToScan, Map<Class, Class> inf2ImplClass) {
         this.scanner = new Reflections(packageToScan);

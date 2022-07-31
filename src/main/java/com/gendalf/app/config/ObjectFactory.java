@@ -10,11 +10,11 @@ import com.gendalf.app.servcie.policeman.Policeman;
 import lombok.SneakyThrows;
 
 public class ObjectFactory {
-    private static ObjectFactory instance = new ObjectFactory();
+    private static final ObjectFactory instance = new ObjectFactory();
 
-    private List<ObjectConfigurator> configurators;
+    private final List<ObjectConfigurator> configurators;
 
-    private Config config;
+    private final Config config;
 
     @SneakyThrows
     public ObjectFactory() {
