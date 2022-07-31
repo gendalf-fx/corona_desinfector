@@ -1,2 +1,6 @@
-package com.gendalf.app.servcie.announcer;public interface Recommendator {
+package com.gendalf.app.servcie.announcer;
+
+public interface Recommender {
+
+    void recommend();
 }
