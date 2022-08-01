@@ -1,7 +1,6 @@
 package com.gendalf.app.data;
 
 import com.gendalf.app.annotatoin.InjectByType;
-import com.gendalf.app.data.Room;
 import com.gendalf.app.servcie.announcer.Announcer;
 import com.gendalf.app.servcie.policeman.Policeman;
 

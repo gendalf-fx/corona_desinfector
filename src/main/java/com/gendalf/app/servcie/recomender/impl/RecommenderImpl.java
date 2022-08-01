@@ -5,6 +5,7 @@ import com.gendalf.app.annotatoin.Singleton;
 import com.gendalf.app.servcie.recomender.Recommender;
 
 @Singleton
+@Deprecated
 public class RecommenderImpl implements Recommender {
     @InjectProperty
     private String alcohol;

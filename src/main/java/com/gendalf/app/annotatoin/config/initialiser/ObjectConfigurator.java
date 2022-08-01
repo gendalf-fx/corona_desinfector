@@ -1,4 +1,4 @@
-package com.gendalf.app.annotatoin.config;
+package com.gendalf.app.annotatoin.config.initialiser;
 
 import com.gendalf.app.context.ApplicationContext;
 

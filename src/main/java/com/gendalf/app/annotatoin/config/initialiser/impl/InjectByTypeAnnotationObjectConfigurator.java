@@ -1,9 +1,9 @@
-package com.gendalf.app.annotatoin.config.impl;
+package com.gendalf.app.annotatoin.config.initialiser.impl;
 
 import java.lang.reflect.Field;
 
 import com.gendalf.app.annotatoin.InjectByType;
-import com.gendalf.app.annotatoin.config.ObjectConfigurator;
+import com.gendalf.app.annotatoin.config.initialiser.ObjectConfigurator;
 import com.gendalf.app.context.ApplicationContext;
 import lombok.SneakyThrows;
 

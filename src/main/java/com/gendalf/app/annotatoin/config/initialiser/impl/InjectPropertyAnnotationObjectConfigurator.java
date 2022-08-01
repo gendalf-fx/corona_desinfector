@@ -1,4 +1,4 @@
-package com.gendalf.app.annotatoin.config.impl;
+package com.gendalf.app.annotatoin.config.initialiser.impl;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.gendalf.app.annotatoin.InjectProperty;
-import com.gendalf.app.annotatoin.config.ObjectConfigurator;
+import com.gendalf.app.annotatoin.config.initialiser.ObjectConfigurator;
 import com.gendalf.app.context.ApplicationContext;
 import lombok.SneakyThrows;
 

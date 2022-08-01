@@ -3,7 +3,6 @@ package com.gendalf.app.servcie.announcer.impl;
 import javax.annotation.PostConstruct;
 
 import com.gendalf.app.annotatoin.InjectByType;
-import com.gendalf.app.config.ObjectFactory;
 import com.gendalf.app.servcie.announcer.Announcer;
 import com.gendalf.app.servcie.recomender.Recommender;
 
