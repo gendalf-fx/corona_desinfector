@@ -4,10 +4,12 @@ import com.gendalf.app.annotatoin.InjectByType;
 import com.gendalf.app.servcie.announcer.Announcer;
 import com.gendalf.app.servcie.policeman.Policeman;
 
+@Deprecated
 public class CoronaDesinfector {
 
     @InjectByType
     private Announcer announcer;
+
     @InjectByType
     private Policeman policeman;
 
